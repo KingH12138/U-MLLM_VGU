@@ -221,8 +221,8 @@ if __name__ == "__main__":
     import pandas as pd
     
     answer_list = generate_text_label_tgucsv(
-        "/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv", 2, 0,
-        "/hongbojiang/datasets/VGU_benchmark/label_images/VGU"
+        "./datasets/VGU_benchmark/annotations/TGU.csv", 2, 0,
+        "./datasets/VGU_benchmark/label_images/VGU"
     )
 
     answer_list = list(set(answer_list))
@@ -230,7 +230,7 @@ if __name__ == "__main__":
     # 生成短文本版本
     batch_generate_labels(
         answer_list, 
-        "/hongbojiang/datasets/VGU_benchmark/label_images/T2I_Render", 
+        "./datasets/VGU_benchmark/label_images/T2I_Render", 
         list(range(len(answer_list)))
     )
 
@@ -244,4 +244,4 @@ if __name__ == "__main__":
 
     df = {"caption": answer_list, "type": types}
     df = pd.DataFrame(df)
-    df.to_csv("/hongbojiang/datasets/VGU_benchmark/annotations/T2I_Render.csv")
+    df.to_csv("./datasets/VGU_benchmark/annotations/T2I_Render.csv")

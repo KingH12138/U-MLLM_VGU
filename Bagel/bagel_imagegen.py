@@ -31,7 +31,7 @@ from safetensors.torch import load_file
 
 
 def get_inferencer():
-    model_path = "/hongbojiang/checkpoints/ByteDance-Seed/BAGEL-7B-MoT"  # Download from https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT
+    model_path = "./checkpoints/ByteDance-Seed/BAGEL-7B-MoT"  # Download from https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT
 
     # LLM config preparing
     llm_config = Qwen2Config.from_json_file(os.path.join(model_path, "llm_config.json"))
@@ -106,7 +106,6 @@ def get_inferencer():
             if k in device_map:
                 device_map[k] = first_device
 
-    # Thanks @onion-liu: https://github.com/ByteDance-Seed/Bagel/pull/8
     model = load_checkpoint_and_dispatch(
         model,
         checkpoint=os.path.join(model_path, "ema.safetensors"),
@@ -163,4 +162,4 @@ if __name__=="__main__":
     inference_hyper = set_config()
     prompt = "[1250, 1380, 1120, 1450, 1620, 1580, 1700, 1850, 1680, 1520, 1400, 1300] represents the net income of a company from January to December 2025 (in ten thousand yuan). Please plot this trend as a line chart, label each month's data, and provide a reasonable title."
     output_dict, _ = inferencer(text=prompt, **inference_hyper)
-    output_dict['image'].save("/hongbojiang/codes/VGU/Bagel/assets/output0.jpg")
+    output_dict['image'].save("./codes/VGU/Bagel/assets/output0.jpg")

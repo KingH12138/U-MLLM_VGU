@@ -1,6 +1,6 @@
 ############################################
 import sys
-sys.path.append("/hongbojiang/codes/VGU/VGT")
+sys.path.append("./codes/VGU/VGT")
 from vgt_imagegen import get_model, generate_image
 ############################################
 import os, random
@@ -16,9 +16,9 @@ def main():
     ############################################
     # TGU和VGU共用anno
     ############################################
-    anno = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/T2I_Render.csv")
+    anno = pd.read_csv("./datasets/VGU_benchmark/annotations/T2I_Render.csv")
     ############################################
-    vgu_prompt_path = '/hongbojiang/datasets/VGU_benchmark/prompts/T2I_Render/task_prompts'
+    vgu_prompt_path = './datasets/VGU_benchmark/prompts/T2I_Render/task_prompts'
     sample_num = len(anno)
     with open(vgu_prompt_path, 'r') as f:
         re_prompt = f.read().split("\n")
@@ -29,7 +29,7 @@ def main():
     indexes = list(range(sample_num))
     captions = list(anno['caption'])
     ############################################
-    output_dir = "/hongbojiang/workdirs/T2I_Render/VGT"
+    output_dir = "./workdirs/T2I_Render/VGT"
     ############################################
     os.makedirs(output_dir, exist_ok=True)
 

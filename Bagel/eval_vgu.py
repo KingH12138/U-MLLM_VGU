@@ -1,6 +1,6 @@
 ############################################
 import sys
-sys.path.append("/hongbojiang/codes/VGU/Bagel")
+sys.path.append("./codes/VGU/Bagel")
 from bagel_imagegen import get_inferencer, set_config
 ############################################
 import os, random
@@ -17,9 +17,9 @@ def main():
     ############################################
     # TGU和VGU共用anno
     ############################################
-    anno = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv")
+    anno = pd.read_csv("./datasets/VGU_benchmark/annotations/TGU.csv")
     ############################################
-    vgu_prompt_path = '/hongbojiang/datasets/VGU_benchmark/prompts/VGU/task_prompts_regenerate'
+    vgu_prompt_path = './datasets/VGU_benchmark/prompts/VGU/task_prompts_regenerate'
     sample_num = len(anno)
     with open(vgu_prompt_path, 'r') as f:
         re_prompt = f.read().split("\n")
@@ -30,7 +30,7 @@ def main():
     indexes = list(range(sample_num))
     questions = list(anno['question'])
     ############################################
-    output_dir = "/hongbojiang/workdirs/VGU/Bagel"
+    output_dir = "/workdirs/VGU/Bagel"
     ############################################
     os.makedirs(output_dir, exist_ok=True)
 

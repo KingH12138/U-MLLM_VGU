@@ -9,8 +9,8 @@ from emu3.mllm.processing_emu3 import Emu3Processor
 
 def get_model():
     # model path
-    EMU_HUB = "/hongbojiang/checkpoints/BAAI/Emu3-Gen"
-    VQ_HUB = "/hongbojiang/checkpoints/BAAI/Emu3-VisionTokenizer"
+    EMU_HUB = "./checkpoints/BAAI/Emu3-Gen"
+    VQ_HUB = "./checkpoints/BAAI/Emu3-VisionTokenizer"
 
     # prepare model and processor
     model = AutoModelForCausalLM.from_pretrained(
@@ -94,4 +94,4 @@ if __name__ == "__main__":
     processor, model = get_model()
     prompt = "Which word is longer: 'Multimodal' or 'Understanding'?"
     image = generate_image(prompt, processor, model)
-    image.save(f"/hongbojiang/codes/VGU/assets/emu3_{prompt}.jpg")
+    image.save(f"./codes/VGU/assets/emu3_{prompt}.jpg")

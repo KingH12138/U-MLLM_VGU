@@ -13,12 +13,12 @@ def get_judge_llm():
     # default: Load the model on the available device(s)
     # We recommend enabling flash_attention_2 for better acceleration and memory saving, especially in multi-image and video scenarios.
     model = AutoModelForImageTextToText.from_pretrained(
-        "/hongbojiang/checkpoints/Qwen/Qwen2.5-VL-72B-Instruct",
+        "./checkpoints/Qwen/Qwen2.5-VL-72B-Instruct",
         attn_implementation="flash_attention_2",
         device_map="auto",
         torch_dtype=torch.bfloat16,
     )
-    processor = AutoProcessor.from_pretrained("/hongbojiang/checkpoints/Qwen/Qwen2.5-VL-72B-Instruct")
+    processor = AutoProcessor.from_pretrained("./checkpoints/Qwen/Qwen2.5-VL-72B-Instruct")
     return model, processor
 
 def generate_answer(question, prediction, label, sys_prompt, user_prompt, model, processor):
@@ -72,9 +72,9 @@ def single_judge():
     idx=2
     task_name = "VGU"
     model_name = "Bagel"
-    output_dir = "/hongbojiang/workdirs"
-    label_image_dir = "/hongbojiang/datasets/VGU_benchmark/label_images"
-    anno_dir = "/hongbojiang/datasets/VGU_benchmark/annotations"
+    output_dir = "./workdirs"
+    label_image_dir = "./datasets/VGU_benchmark/label_images"
+    anno_dir = "./datasets/VGU_benchmark/annotations"
 
     if task_name=="VGU":
         anno_path = os.path.join(anno_dir, "TGU.csv") 
@@ -90,10 +90,10 @@ def single_judge():
     answer = anno_df['answer'][idx]
 
     # system
-    with open("/hongbojiang/datasets/VGU_benchmark/LLM_judge/llm_judge_system_prompt_vgu", 'r') as f:
+    with open("./datasets/VGU_benchmark/LLM_judge/llm_judge_system_prompt_vgu", 'r') as f:
         SYS_PROMPT = f.read()
     # user
-    with open("/hongbojiang/datasets/VGU_benchmark/LLM_judge/llm_judge_user_prompt_vgu", 'r') as f:
+    with open("./datasets/VGU_benchmark/LLM_judge/llm_judge_user_prompt_vgu", 'r') as f:
         USER_PROMPT = f.read()
 
     print(f"Question:\n{question}\nAnswer:\n{answer}\n\
@@ -116,9 +116,9 @@ def batch_judge(args):
     model, processor = get_judge_llm()
 
     task_name = "VGU"
-    output_dir = "/hongbojiang/workdirs"
-    label_image_dir = "/hongbojiang/datasets/VGU_benchmark/label_images"
-    anno_dir = "/hongbojiang/datasets/VGU_benchmark/annotations"
+    output_dir = "./workdirs"
+    label_image_dir = "./datasets/VGU_benchmark/label_images"
+    anno_dir = "./datasets/VGU_benchmark/annotations"
     if task_name=="VGU":
         anno_path = os.path.join(anno_dir, "TGU.csv") 
     else:
@@ -129,10 +129,10 @@ def batch_judge(args):
     num_sample = len(anno_df)
 
     # system
-    with open("/hongbojiang/datasets/VGU_benchmark/LLM_judge/llm_judge_system_prompt_vgu", 'r') as f:
+    with open("./datasets/VGU_benchmark/LLM_judge/llm_judge_system_prompt_vgu", 'r') as f:
         SYS_PROMPT = f.read()
     # user
-    with open("/hongbojiang/datasets/VGU_benchmark/LLM_judge/llm_judge_user_prompt_vgu", 'r') as f:
+    with open("./datasets/VGU_benchmark/LLM_judge/llm_judge_user_prompt_vgu", 'r') as f:
         USER_PROMPT = f.read()
     
     # 看一下有没有已经生成好的样本

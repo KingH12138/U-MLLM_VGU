@@ -3,8 +3,8 @@
 """
 import pandas as pd
 
-render_df = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/T2I_Render.csv")
-tgu_df = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv")
+render_df = pd.read_csv("./datasets/VGU_benchmark/annotations/T2I_Render.csv")
+tgu_df = pd.read_csv("./datasets/VGU_benchmark/annotations/TGU.csv")
 
 answers = tgu_df['answer'].tolist()
 captions = render_df['caption'].tolist()
@@ -35,5 +35,5 @@ import json
 # mapping = get_duplicate_mapping(answers, captions)
 mapping = get_a2b_mapping(answers, captions)    # render->vgu
 print(len(mapping))
-with open("/hongbojiang/datasets/VGU_benchmark/annotations/vgu2render_mapping.json", 'w') as f:
+with open("./datasets/VGU_benchmark/annotations/vgu2render_mapping.json", 'w') as f:
     json.dump(mapping, f)

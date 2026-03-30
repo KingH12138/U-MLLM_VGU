@@ -13,7 +13,7 @@ from unilip.pipeline_gen import CustomGenPipeline
 import random
 
 def get_model():
-    model_path = "/hongbojiang/checkpoints/kanashi6/UniLIP-3B"
+    model_path = "./checkpoints/kanashi6/UniLIP-3B"
     disable_torch_init()
     model_path = os.path.expanduser(model_path)
     model_name = get_model_name_from_path(model_path)
@@ -67,6 +67,6 @@ if __name__=='__main__':
     prompt = 'What is the result of mixing red and blue paint?'
     model, pipe = get_model()
     image_sana = generate_image(prompt, model, pipe)
-    save_path = f"/hongbojiang/codes/VGU/assets/unilip_{prompt}.jpg"
+    save_path = f"./codes/VGU/assets/unilip_{prompt}.jpg"
     image_sana.save(save_path)
 

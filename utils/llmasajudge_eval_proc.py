@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from statsmodels.nonparametric.smoothers_lowess import lowess
 
-relation_save_dir = '/hongbojiang/codes/VGU/assets/relation'
+relation_save_dir = './codes/VGU/assets/relation'
 os.makedirs(relation_save_dir, exist_ok=True)
 
 def conditional_expectation_analysis(vgu_scores, render_scores, n_bins=5):
@@ -65,7 +65,7 @@ def conditional_expectation_analysis(vgu_scores, render_scores, n_bins=5):
     plt.legend()
     plt.xticks(rotation=30)
     plt.tight_layout()
-    plt.savefig('/hongbojiang/codes/VGU/assets/relation/conditional_expectation.png', dpi=300, bbox_inches='tight')
+    plt.savefig('./codes/VGU/assets/relation/conditional_expectation.png', dpi=300, bbox_inches='tight')
     
 
 def plot_lowless(vgu_scores, render_scores, save_path):
@@ -200,7 +200,7 @@ def jsonstr_to_scores(jsonstr):
 
 def single_proc():
     idx = 12
-    save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    save_dir = "./workdirs/COMSC_llm_judge"
     model_name = "BLIP3o"
     task_name = "VGU"
     json_path = os.path.join(save_dir, task_name, f"{model_name}.json")
@@ -254,7 +254,7 @@ def batch_proc1(model_name_list, threshold=1, sf_tau_func=get_median):
         return output
 
     # 加载从VGU到Render的映射
-    with open("/hongbojiang/datasets/VGU_benchmark/annotations/vgu2render_mapping.json", 'r') as f:
+    with open("./datasets/VGU_benchmark/annotations/vgu2render_mapping.json", 'r') as f:
         mapping = json.load(f)
     ######################################################
     # 分开测试
@@ -338,38 +338,6 @@ def batch_proc1(model_name_list, threshold=1, sf_tau_func=get_median):
     print(f"Spearmanr p: {spearman_p:.4f}")
     # plot_lowless(vgu_scores, render_scores, os.path.join(relation_save_dir, "all.jpg"))
     conditional_expectation_analysis(vgu_scores, render_scores)
-    # # 计算条件概率
-    # counts = [[0,0],[0,0]]
-    # # 取中位数
-    # threshold1 = threshold
-    # threshold2 = threshold
-    # for i in range(len(vgu_scores)):
-    #     if vgu_scores[i]<=threshold1 and render_scores[i]<=threshold2:  # VF+RF
-    #         counts[0][0]+=1
-    #     elif vgu_scores[i]>threshold1 and render_scores[i]<=threshold2:    # VS+RF
-    #         counts[0][1]+=1
-    #     elif vgu_scores[i]<=threshold1 and render_scores[i]>threshold2:   # VF+RS
-    #         counts[1][0]+=1
-    #     elif vgu_scores[i]>threshold1 and render_scores[i]>threshold2:  # VS+RS
-    #         counts[1][1]+=1
-    # # 计算P(VF|RF)=RF&VF/RF(Render失败时，VGU失败可能性)
-    # if counts[0][0]+counts[0][1]==0:
-    #     p1 = 0
-    # else:
-    #     p1 = counts[0][0]/(counts[0][0]+counts[0][1])
-    # print("P(VF|RF):", p1)
-    # # 计算P(VF|RS)=RS&VF/RS(Render成功时，VGU失败可能性)
-    # if counts[1][1]+counts[1][0]==0:
-    #     p2 = 0
-    # else:
-    #     p2 = counts[1][0]/(counts[1][1]+counts[1][0])
-    # print("P(VF|RS):", p2)
-    # if p1!=0:
-    #     mig = round(((p1-p2)/p1)*100, 2)
-    # else:
-    #     mig = None
-    # print(f"缓解: {mig}%")
-    # print("#"*30)
     return
 
 if __name__=="__main__":
@@ -378,7 +346,7 @@ if __name__=="__main__":
 
     # print("="*40)
     # print("VGU:")
-    # save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    # save_dir = "./workdirs/COMSC_llm_judge"
     # task_name = "VGU"
     # MODELS_TO_EVALUATE = [
     #     "Emu3",
@@ -399,7 +367,7 @@ if __name__=="__main__":
     ########################################################################
     # print("="*40)
     # print("Render:")
-    # save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    # save_dir = "./workdirs/COMSC_llm_judge"
     # task_name = "Render"
     # MODELS_TO_EVALUATE = [
     #     "Emu3",
@@ -420,7 +388,7 @@ if __name__=="__main__":
     ########################################################################
     # print("="*40)
     # print("TGU:")
-    # save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    # save_dir = "./workdirs/COMSC_llm_judge"
     # task_name = "TGU"
     # MODELS_TO_EVALUATE = [
     #     "Bagel",
@@ -449,7 +417,7 @@ if __name__=="__main__":
         "Qwen-Image",
         "VGT"
     ]
-    save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    save_dir = "./workdirs/COMSC_llm_judge"
     task_name="VGU"
     model_eval_result = batch_proc1(MODELS_TO_EVALUATE, 1, get_median)
     

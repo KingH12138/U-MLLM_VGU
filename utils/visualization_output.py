@@ -5,15 +5,15 @@ import os, json
 import pandas as pd
 
 # vgu2render
-with open("/hongbojiang/datasets/VGU_benchmark/annotations/vgu2render_mapping.json",'r') as f:
+with open("./datasets/VGU_benchmark/annotations/vgu2render_mapping.json",'r') as f:
         vgu2render = json.load(f)
 
 # label
-tgu_csv_path = "/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv"
+tgu_csv_path = "./datasets/VGU_benchmark/annotations/TGU.csv"
 # prediction
 model_name = "LongCat"
 sample_idx = 1339
-work_dir  = "/hongbojiang/workdirs"
+work_dir  = "./workdirs"
 
 
 df = pd.read_csv(tgu_csv_path)
@@ -29,7 +29,7 @@ if os.path.exists(tgu_path):
             tgu_prediciton = f.read()
 else:
     tgu_prediciton = "None"
-output_path = os.path.join("/hongbojiang/codes/VGU/assets",f"{model_name}_{sample_idx}.jpg")
+output_path = os.path.join("./codes/VGU/assets",f"{model_name}_{sample_idx}.jpg")
 
 
 def make_board(top_texts, bottom_left_text, bottom_images, save_path="visualize.jpg", fig_size=(12, 6)):

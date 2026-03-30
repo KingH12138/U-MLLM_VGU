@@ -98,7 +98,7 @@ if __name__=="__main__":
     
     print("="*40)
     print("VGU:")
-    save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    save_dir = "./workdirs/COMSC_llm_judge"
     task_name = "VGU"
     MODELS_TO_EVALUATE = [
         "Emu3",
@@ -118,7 +118,7 @@ if __name__=="__main__":
     #######################################################################
     print("="*40)
     print("Render:")
-    save_dir = "/hongbojiang/workdirs/COMSC_llm_judge"
+    save_dir = "./workdirs/COMSC_llm_judge"
     task_name = "Render"
     MODELS_TO_EVALUATE = [
         "Emu3",
@@ -136,7 +136,6 @@ if __name__=="__main__":
     print(model_eval_result)
     #######################################################################
     # 查看标注文件
-    tgu_csv = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv")
+    tgu_csv = pd.read_csv("./datasets/VGU_benchmark/annotations/TGU.csv")
     print(tgu_csv.iloc[1339,1])
-    # 欧克，确实发现了几个correctness高，但是complete低下且确实不符合人工评判标准的.
 

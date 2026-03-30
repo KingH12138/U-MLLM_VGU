@@ -64,7 +64,7 @@ def get_model():
     return model, uni_prompting, device, config, vq_model, clip_image_processor
 
 def generate_text(question, model, uni_prompting, device, config, vq_model, clip_image_processor):
-    # image_ori = Image.open("/hongbojiang/codes/VGU/Show-o/mmu_validation/dog.png").convert("RGB")
+    # image_ori = Image.open("./codes/VGU/Show-o/mmu_validation/dog.png").convert("RGB")
     # image = image_transform(image_ori, resolution=config.dataset.params.resolution).to(device)
     # image = image.unsqueeze(0)
     # image_tokens = vq_model.get_code(image) + len(uni_prompting.text_tokenizer)
@@ -178,7 +178,7 @@ EI-MS: m/z = 100, 71, 57, 43"""
 
 #     temperature = 0.8  # 1.0 = no change, < 1.0 = less random, > 1.0 = more random, in predictions
 #     top_k = 1  # retain only the top_k most likely tokens, clamp others to have 0 probability
-#     config.mmu_image_root = "/hongbojiang/codes/VGU/Show-o/mmu_validation"
+#     config.mmu_image_root = "./codes/VGU/Show-o/mmu_validation"
 #     file_list = ['dog.png']
 #     responses = ['' for i in range(len(file_list))]
 #     images = []

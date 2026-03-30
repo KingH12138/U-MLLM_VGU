@@ -3,7 +3,7 @@ import torch
 
 
 def get_model():
-    model_name = "/hongbojiang/checkpoints/Qwen/Qwen-Image"
+    model_name = "./checkpoints/Qwen/Qwen-Image"
     # Load the pipeline
     if torch.cuda.is_available():
         torch_dtype = torch.bfloat16
@@ -50,4 +50,4 @@ if __name__ == "__main__":
     pipe = get_model()
     prompt = "Which animal is better at catching mice—cats or dogs? Please write the answer on the blackboard."
     image = generate_image(prompt, pipe)
-    image.save(f"/hongbojiang/codes/VGU/assets/qwenimage_{prompt}.jpg")
+    image.save(f"./codes/VGU/assets/qwenimage_{prompt}.jpg")

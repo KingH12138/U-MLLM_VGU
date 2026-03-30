@@ -31,7 +31,7 @@ from safetensors.torch import load_file
 
 
 def get_inferencer():
-    model_path = "/hongbojiang/checkpoints/ByteDance-Seed/BAGEL-7B-MoT"  # Download from https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT
+    model_path = "./checkpoints/ByteDance-Seed/BAGEL-7B-MoT"  # Download from https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT
 
     # LLM config preparing
     llm_config = Qwen2Config.from_json_file(os.path.join(model_path, "llm_config.json"))
@@ -106,7 +106,6 @@ def get_inferencer():
             if k in device_map:
                 device_map[k] = first_device
 
-    # Thanks @onion-liu: https://github.com/ByteDance-Seed/Bagel/pull/8
     model = load_checkpoint_and_dispatch(
         model,
         checkpoint=os.path.join(model_path, "ema.safetensors"),

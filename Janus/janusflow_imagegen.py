@@ -8,7 +8,7 @@ import torchvision
 
 def get_model():
     # specify the path to the model
-    model_path = "/hongbojiang/checkpoints/deepseek-ai/JanusFlow-1.3B"
+    model_path = "./checkpoints/deepseek-ai/JanusFlow-1.3B"
     vl_chat_processor: VLChatProcessor = VLChatProcessor.from_pretrained(model_path)
     tokenizer = vl_chat_processor.tokenizer
 

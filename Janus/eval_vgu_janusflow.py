@@ -1,6 +1,6 @@
 ############################################
 import sys
-sys.path.append("/hongbojiang/codes/VGU/Janus")
+sys.path.append("./codes/VGU/Janus")
 from janusflow_imagegen import get_model, generate
 ############################################
 import os, random
@@ -16,9 +16,9 @@ def main():
     ############################################
     # TGU和VGU共用anno
     ############################################
-    anno = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv")
+    anno = pd.read_csv("./datasets/VGU_benchmark/annotations/TGU.csv")
     ############################################
-    vgu_prompt_path = '/hongbojiang/datasets/VGU_benchmark/prompts/VGU/task_prompts_regenerate'
+    vgu_prompt_path = './datasets/VGU_benchmark/prompts/VGU/task_prompts_regenerate'
     sample_num = len(anno)
     with open(vgu_prompt_path, 'r') as f:
         re_prompt = f.read().split("\n")
@@ -29,7 +29,7 @@ def main():
     indexes = list(range(sample_num))
     questions = list(anno['question'])
     ############################################
-    output_dir = "/hongbojiang/workdirs/VGU/JanusFlow"
+    output_dir = "./workdirs/VGU/JanusFlow"
     ############################################
     os.makedirs(output_dir, exist_ok=True)
 

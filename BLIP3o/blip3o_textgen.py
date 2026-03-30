@@ -1,7 +1,3 @@
-"""
-https://github.com/JiuhaiChen/BLIP3o/issues/21#issuecomment-2902131204
-"""
-
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
 from qwen_vl_utils import process_vision_info
 import torch

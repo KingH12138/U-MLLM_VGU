@@ -5,7 +5,7 @@ from longcat_image.pipelines import LongCatImagePipeline
 
 def get_model():
     device = torch.device('cuda')
-    checkpoint_dir = '/hongbojiang/checkpoints/meituan-longcat/LongCat-Image'
+    checkpoint_dir = './checkpoints/meituan-longcat/LongCat-Image'
 
     text_processor = AutoProcessor.from_pretrained( checkpoint_dir, subfolder = 'tokenizer'  )
     transformer = LongCatImageTransformer2DModel.from_pretrained( checkpoint_dir , subfolder = 'transformer', 
@@ -40,4 +40,4 @@ if __name__ == "__main__":
     prompt = "Which animal is better at catching mice—cats or dogs? "
     pipe = get_model()
     image = generate_image(prompt, pipe)
-    image.save(f"/hongbojiang/codes/VGU/assets/longcat_{prompt}.jpg")
+    image.save(f"./codes/VGU/assets/longcat_{prompt}.jpg")

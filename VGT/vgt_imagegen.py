@@ -8,13 +8,13 @@ from xtuner.registry import BUILDER
 from mmengine.config import Config
 from einops import rearrange
 import sys
-sys.path.append("/hongbojiang/codes/VGU/VGT")
+sys.path.append("./codes/VGU/VGT")
 from src.utils import load_checkpoint_with_ema
 
 # Parameter settings
 ###############VGT Qwen2.5VL########################
-CPKT_PATH = "/hongbojiang/checkpoints/hustvl/vgt_qwen25vl_2B_sft/iter_5000.pth"
-CONFIG = "/hongbojiang/codes/VGU/VGT/configs/VGT_qwen2_5vl/vgt_qwen2_5vl_2B_448px.py"
+CPKT_PATH = "./checkpoints/hustvl/vgt_qwen25vl_2B_sft/iter_5000.pth"
+CONFIG = "./codes/VGU/VGT/configs/VGT_qwen2_5vl/vgt_qwen2_5vl_2B_448px.py"
 
 ###############VGT InterVL3########################
 # CPKT_PATH = "ckpts/hustvl/vgt_internvl3_1_6B_sft/iter_5000.pth"

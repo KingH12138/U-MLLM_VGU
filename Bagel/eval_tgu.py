@@ -1,6 +1,6 @@
 ############################################
 import sys
-sys.path.append("/hongbojiang/codes/VGU/Bagel")
+sys.path.append("./codes/VGU/Bagel")
 from bagel_textgen import get_inferencer, set_config
 ############################################
 import os, random
@@ -17,14 +17,14 @@ def main():
     ############################################
     # TGU和VGU共用anno
     ############################################
-    anno = pd.read_csv("/hongbojiang/datasets/VGU_benchmark/annotations/TGU.csv")
+    anno = pd.read_csv("./datasets/VGU_benchmark/annotations/TGU.csv")
     ############################################
     sample_num = len(anno)
     # PIL.Image对象组成的list
     indexes = list(range(sample_num))
     questions = list(anno['question'])
     ############################################
-    output_dir = "/hongbojiang/workdirs/TGU/Bagel"
+    output_dir = "./workdirs/TGU/Bagel"
     ############################################
     os.makedirs(output_dir, exist_ok=True)
 

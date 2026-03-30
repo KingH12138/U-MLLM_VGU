@@ -6,42 +6,42 @@ import random
 import pandas as pd
 ############################################################
 # MMLU
-MMLU_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/cais/mmlu", "all")
+MMLU_ds = load_dataset("./datasets/TextOnlyQA/cais/mmlu", "all")
 # test: ['question', 'subject', 'choices', 'answer']
 MMLU_ds_sampled = random.sample(list(MMLU_ds['test']), 250)
 
 # BoolQ
-BoolQ_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/google/boolq")
+BoolQ_ds = load_dataset("./datasets/TextOnlyQA/google/boolq")
 # validation:['question', 'answer', 'passage']
 BoolQ_ds_sampled = random.sample(list(BoolQ_ds['validation']), 250)
 
 # CommmonSenseQA
-CSQA_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/tau/commonsense_qa")
+CSQA_ds = load_dataset("./datasets/TextOnlyQA/tau/commonsense_qa")
 # validation:['id', 'question', 'question_concept', 'choices', 'answerKey']
 CSQA_ds_sampled = random.sample(list(CSQA_ds['validation']), 250)
 ############################################################
 # ARC
-ARC_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/allenai/ai2_arc", "ARC-Challenge")
+ARC_ds = load_dataset("./datasets/TextOnlyQA/allenai/ai2_arc", "ARC-Challenge")
 # validation:['id', 'question', 'choices', 'answerKey']
 ARC_ds_sampled = random.sample(list(ARC_ds['validation']), 250)
 
 # HellaSwag
-hellaswag_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/Rowan/hellaswag")
+hellaswag_ds = load_dataset("./datasets/TextOnlyQA/Rowan/hellaswag")
 # validation:['ind', 'activity_label', 'ctx_a', 'ctx_b', 'ctx', 'endings', 'source_id', 'split', 'split_type', 'label']
 hellaswag_ds_sampled = random.sample(list(hellaswag_ds['validation']), 250)
 
 # OpenBookQA
-openbook_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/allenai/openbookqa")
+openbook_ds = load_dataset("./datasets/TextOnlyQA/allenai/openbookqa")
 # ['id', 'question_stem', 'choices', 'answerKey']
 openbook_ds_sampled = random.sample(list(openbook_ds['validation']), 250)
 ############################################################
 # MATH
-math_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/HuggingFaceH4/MATH-500")
+math_ds = load_dataset("./datasets/TextOnlyQA/HuggingFaceH4/MATH-500")
 # test: ['problem', 'solution', 'answer', 'subject', 'level', 'unique_id']
 math_ds_sampled = random.sample(list(math_ds['test']), 250)
 
 # HumanEval
-humaneval_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/openai/openai_humaneval")
+humaneval_ds = load_dataset("./datasets/TextOnlyQA/openai/openai_humaneval")
 # test:['task_id', 'prompt', 'canonical_solution', 'test', 'entry_point']
 if len(humaneval_ds['test'])<=250:
     humaneval_ds_sampled = humaneval_ds['test']
@@ -49,7 +49,7 @@ else:
     humaneval_ds_sampled = random.sample(list(humaneval_ds['test']), 250)
 
 # GPQA
-gpqa_ds = load_dataset("/hongbojiang/datasets/TextOnlyQA/Wanfq/gpqa","gpqa_main")
+gpqa_ds = load_dataset("./datasets/TextOnlyQA/Wanfq/gpqa","gpqa_main")
 # train(其实是val):["Question", "Correct Answer"]
 gpqa_ds_sampled = random.sample(list(gpqa_ds['train']), 250)
 ############################################################
@@ -176,4 +176,4 @@ for item in gpqa_ds_sampled:
 # 组合
 VGU_dataset = pd.DataFrame(VGU_dataset)
 VGU_dataset = VGU_dataset.sample(frac=1, random_state=42).reset_index(drop=True)
-VGU_dataset.to_csv("/hongbojiang/datasets/VGU_benchmark/annotation.csv", index=True)
+VGU_dataset.to_csv("./datasets/VGU_benchmark/annotation.csv", index=True)

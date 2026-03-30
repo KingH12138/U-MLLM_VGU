@@ -9,8 +9,8 @@ from emu3.mllm.processing_emu3 import Emu3Processor
 
 def get_model():
     # model path
-    EMU_HUB = "/hongbojiang/checkpoints/BAAI/Emu3-Chat"
-    VQ_HUB = "/hongbojiang/checkpoints/BAAI/Emu3-VisionTokenizer"
+    EMU_HUB = "./checkpoints/BAAI/Emu3-Chat"
+    VQ_HUB = "./checkpoints/BAAI/Emu3-VisionTokenizer"
 
     # prepare model and processor
     model = AutoModelForCausalLM.from_pretrained(
