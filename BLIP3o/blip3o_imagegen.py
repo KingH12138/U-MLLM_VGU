@@ -8,7 +8,7 @@ import os
 
 @dataclass
 class T2IConfig:
-    model_path: str = "/hongbojiang/checkpoints/BLIP3o/BLIP3o-NEXT-SFT-3B"
+    model_path: str = "/checkpoints/BLIP3o/BLIP3o-NEXT-SFT-3B"
     device: str = "cuda"
     dtype: torch.dtype = torch.bfloat16
     # generation config
